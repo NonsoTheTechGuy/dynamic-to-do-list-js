@@ -26,4 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
             taskInput.value = ''; // Clear input field
         }
     }
+    // Add Task Button Click Event
+    addButton.addEventListener('click', addTask);
 });
