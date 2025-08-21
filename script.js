@@ -3,6 +3,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskInput = document.getElementById('task-input');
     const taskList = document.getElementById('task-list');
 
+    // Check Local Storage for existing tasks and populate the list
+    let tasks = [];
+    const storedTasks = localStorage.getItem('tasks');
+    if (storedTasks) {
+        tasks = JSON.parse(storedTasks);
+        tasks.forEach(taskText => {
+            const li = document.createElement('li');
+            li.textContent = taskText;
+
+            const removeBtn = document.createElement('button');
+            removeBtn.textContent = 'Remove';
+            removeBtn.classList.add('remove-btn');
+            removeBtn.onclick = function() {
+                taskList.removeChild(li);
+                // Remove from tasks array and update localStorage
+                tasks = tasks.filter(t => t !== taskText);
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+            };
+
+            li.appendChild(removeBtn);
+            taskList.appendChild(li);
+        });
+    }
     // Add Task Function
     function addTask() {
         const taskText = taskInput.value.trim();
