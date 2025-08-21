@@ -18,7 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Create remove button
         const removeBtn = document.createElement('button');
         removeBtn.textContent = 'Remove';
-        removeBtn.className = 'remove-btn';
+        // removeBtn.className = 'remove-btn'; This sets the class directly (overwriting any existing classes).
+        // removeBtn.classList.add('remove-btn') would add the remove-btn class to the button, but removeBtn.className = 'remove-btn', sets the class directly (overwriting any existing classes). Using classList.add is preferred if you want to add a class without removing others.
+        removeBtn.classList.add('remove-btn');
 
         // Remove li from taskList on click
         removeBtn.onclick = function() {
