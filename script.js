@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
             removeBtn.onclick = function() {
                 taskList.removeChild(li);
                 // Remove from tasks array and update localStorage
-                tasks = tasks.filter(t => t !== taskText);
+                // tasks = tasks.filter(t => t !== taskText);
+                tasks = tasks.filter(task => task !== taskText);
                 localStorage.setItem('tasks', JSON.stringify(tasks));
             };
 
